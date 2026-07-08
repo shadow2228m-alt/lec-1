@@ -1,0 +1,193 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-tajawal);
+  --font-display: var(--font-cairo);
+  --font-mono: var(--font-jetbrains);
+  --color-ring: var(--ring);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+}
+
+:root {
+  /* Evolved dark palette — deeper, richer, with subtle color temperature */
+  --background: #000000;
+  --foreground: #f5f5f7;
+  --card: #0a0a0c;
+  --card-foreground: #f5f5f7;
+  --primary: #0a84ff;
+  --primary-foreground: #ffffff;
+  --secondary: #1c1c1e;
+  --secondary-foreground: #f5f5f7;
+  --muted: #1c1c1e;
+  --muted-foreground: #86868b;
+  --accent: #0a84ff;
+  --accent-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #0a84ff;
+
+  /* Typography scale */
+  --ink: #f5f5f7;
+  --ink-soft: #a1a1a6;
+  --ink-faint: #6e6e73;
+  --ink-darker: #48484a;
+  --bg-0: #000000;
+  --bg-1: #0a0a0c;
+  --bg-2: #1c1c1e;
+  --bg-3: #2c2c2e;
+
+  /* Accent system — primary blue + supporting accents (used sparingly) */
+  --accent-blue: #0a84ff;
+  --accent-blue-bright: #64d2ff;
+  --accent-indigo: #5e5ce6;
+  --accent-cyan: #64d2ff;
+  --accent-violet: #bf5af2;
+  --accent-mint: #30d158;
+  --accent-amber: #ff9f0a;
+  --accent-rose: #ff375f;
+  --accent-orange: #ff9f0a;
+
+  /* Semantic */
+  --success: #30d158;
+  --warning: #ff9f0a;
+  --error: #ff375f;
+  --info: #64d2ff;
+
+  --code-bg: #0d1117;
+  --code-border: rgba(255, 255, 255, 0.06);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+  html, body {
+    background: var(--bg-0);
+    color: var(--ink);
+    font-family: var(--font-tajawal), 'Tajawal', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    /* Apple uses system font rendering */
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cairo), 'Cairo', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  body {
+    /* Prevent text selection flash on rapid scroll */
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-cairo), 'Cairo', sans-serif; }
+  .font-body { font-family: var(--font-tajawal), 'Tajawal', sans-serif; }
+  .font-mono { font-family: var(--font-jetbrains), 'JetBrains Mono', monospace; }
+
+  .text-ink { color: var(--ink); }
+  .text-ink-soft { color: var(--ink-soft); }
+  .text-ink-faint { color: var(--ink-faint); }
+  .text-accent { color: var(--accent-blue); }
+
+  /* Apple-style gradient text — subtle, premium */
+  .text-gradient {
+    background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-blue {
+    background: linear-gradient(180deg, #64d2ff 0%, #2997ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Subtle glass effect — Apple frosted glass */
+  .glass {
+    background: rgba(20, 20, 22, 0.6);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .glass-card {
+    background: rgba(28, 28, 30, 0.5);
+    backdrop-filter: saturate(180%) blur(16px);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* Apple-style shadow — subtle, layered */
+  .shadow-premium {
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 20px 40px -20px rgba(0, 0, 0, 0.8),
+      0 8px 16px -8px rgba(0, 0, 0, 0.4);
+  }
+  .shadow-glow-blue {
+    box-shadow:
+      0 0 0 1px rgba(41, 151, 255, 0.3),
+      0 12px 40px -8px rgba(41, 151, 255, 0.4),
+      0 4px 12px -4px rgba(41, 151, 255, 0.3);
+  }
+
+  /* Radial spotlight background — Apple style */
+  .bg-spotlight {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(41, 151, 255, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(120, 80, 255, 0.06) 0%, transparent 70%),
+      #000000;
+  }
+
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  /* Custom scrollbar — minimal, Apple style */
+  ::-webkit-scrollbar { width: 0; height: 0; }
+  .nice-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+  .nice-scroll::-webkit-scrollbar-track { background: transparent; }
+  .nice-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+  }
+  .nice-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.15); }
+
+  ::selection {
+    background: rgba(41, 151, 255, 0.3);
+    color: inherit;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
